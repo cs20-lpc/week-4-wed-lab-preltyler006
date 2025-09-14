@@ -1,0 +1,12 @@
+replace: error, position out of bounds
+insert: error, position out of bounds
+May --> Your --> Heart
+Element 2: Heart
+May --> Your --> Drums --> Beat
+remove: error, position out of bounds
+List is empty, no elements to display.
+thirdList length: 3
+May --> Your --> Heart --> Be A --> Yellow --> Banana
+getElement: error, position out of bounds
+getElement: error, position out of bounds
+myList is empty!
