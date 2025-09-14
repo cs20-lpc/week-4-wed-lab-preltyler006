@@ -1,6 +1,7 @@
 template <typename T>
 LinkedList<T>::LinkedList()
-: head(nullptr) { }
+: head(nullptr), length(0) { }
+
 
 template <typename T>
 LinkedList<T>::LinkedList(const LinkedList<T>& copyObj) {
@@ -55,8 +56,17 @@ void LinkedList<T>::clear() {
 }
 
 template <typename T>
-void LinkedList<T>::copy(const LinkedList<T>& copyObj) {
-    // TODO
+void LinkedList<T>::copy(const LinkedList<T>& other) {
+    head = nullptr;
+    this->length = 0;
+
+    Node* tail = nullptr;
+    for (Node* cur = other.head; cur != nullptr; cur = cur->next) {
+        Node* n = new Node(cur->value);   // or cur->data depending on your Node
+        if (!head) { head = n; tail = n; }
+        else { tail->next = n; tail = n; }
+        ++length;
+    }
 }
 
 template <typename T>
@@ -81,7 +91,25 @@ int LinkedList<T>::getLength() const {
 
 template <typename T>
 void LinkedList<T>::insert(int position, const T& elem) {
-    // TODO
+    if (position < 0 || position > this->length) {
+        throw string("insert: error, position out of bounds");
+    }
+
+    Node* newNode = new Node(elem);
+
+    if (position == 0) {
+        newNode->next = head;
+        head = newNode;
+        ++this->length;
+        return;
+    }
+
+    Node* prev = head;
+    for (int i = 0; i < position - 1; ++i) prev = prev->next;
+
+    newNode->next = prev->next;
+    prev->next = newNode;
+    ++this->length;
 }
 
 template <typename T>
@@ -91,7 +119,28 @@ bool LinkedList<T>::isEmpty() const {
 
 template <typename T>
 void LinkedList<T>::remove(int position) {
-    // TODO
+    if (position < 0 || position >= this->length) {
+        throw string("remove: error, position out of bounds");
+    }
+
+    if (position == 0) {
+        Node* toDelete = head;
+        head = head->next;
+        delete toDelete;
+        this->length--;
+        return;
+    }
+
+    Node* prev = head;
+    for (int i = 0; i < position - 1; ++i) {
+        prev = prev->next;
+    }
+
+    Node* toDelete = prev->next;
+    prev->next = toDelete->next;
+    delete toDelete;
+
+    this->length--;
 }
 
 template <typename T>

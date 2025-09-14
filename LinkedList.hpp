@@ -19,6 +19,7 @@ class LinkedList : public List<T> {
 
         // a pointer to the front of the list
         Node* head;
+        int length;
 
     private:
         // copy the state of the argument list to `this`

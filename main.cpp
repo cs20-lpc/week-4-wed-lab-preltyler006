@@ -14,7 +14,7 @@ int main() {
     try {
         myList.replace(-3, "?");
     }
-    catch (string& e) {
+    catch (const string& e) {
         cerr << e << endl;
     }
 
@@ -25,13 +25,16 @@ int main() {
     try {
         myList.insert(5, "kweh");
     }
-    catch (string& e) {
+    catch (const string& e) {
         cerr << e << endl;
     }
 
     // remove an element
-    myList.remove(3);
-
+    try {
+        myList.remove(3);
+    } catch (const string& e) {
+        cerr << e << endl;
+    }
     // display the state of the list
     cout << myList;
 
@@ -51,7 +54,7 @@ int main() {
     try {
         secondList.remove(4);
     }
-    catch (string& e) {
+    catch (const string& e) {
         cerr << e << endl;
     }
 
@@ -79,15 +82,17 @@ int main() {
     try {
         cout << thirdList.getElement(-7) << endl;
     }
-    catch (string& e) {
+    catch (const string& e) {
         cerr << e << endl;
     }
     try {
         cout << thirdList.getElement(7) << endl;
     }
-    catch (string& e) {
+    catch (const string& e) {
         cerr << e << endl;
     }
+
+
 
     // clear out the list and verify it is now empty
     myList.clear();
