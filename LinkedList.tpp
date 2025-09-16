@@ -159,6 +159,23 @@ void LinkedList<T>::replace(int position, const T& elem) {
 }
 
 template <typename T>
+void LinkedList<T>::reverse() {
+    Node* curr = head;
+    Node* prev = nullptr;
+    Node* next = nullptr;
+
+    while (curr != nullptr) {
+        next = curr->next;
+        curr->next = prev;
+        prev x = curr;
+        curr = next;
+    }
+    head = prev;
+}
+
+
+
+template <typename T>
 ostream& operator<<(ostream& outStream, const LinkedList<T>& myObj) {
     if (myObj.isEmpty()) {
         outStream << "List is empty, no elements to display.\n";

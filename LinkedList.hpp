@@ -64,6 +64,8 @@ class LinkedList : public List<T> {
         // the value given (argument 2)
         virtual void replace(int, const T&) override;
 
+        virtual void reverse();
+
         // overloaded stream insertion operator to make printing easier
         template <typename U>
         friend ostream& operator<<(ostream&, const LinkedList<U>&);
