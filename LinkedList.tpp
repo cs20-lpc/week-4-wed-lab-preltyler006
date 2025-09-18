@@ -167,7 +167,7 @@ void LinkedList<T>::reverse() {
     while (curr != nullptr) {
         next = curr->next;
         curr->next = prev;
-        prev x = curr;
+        prev = curr;
         curr = next;
     }
     head = prev;
